@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com; script-src 'self'; style-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Snapshot · Webpage Archiver</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/purify.min.js"></script>
+  <script type="module" src="assets/snapshot.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">Webpage Archiver</a>
+    <nav>
+      <a href="archive.html">Archive</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+  <main class="reader">
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    <article id="snapshot" hidden>
+      <header class="snapshot-header">
+        <p id="site" class="kicker"></p>
+        <h1 id="title"></h1>
+        <p id="byline" class="byline"></p>
+        <div id="warning" class="notice warning" hidden></div>
+        <dl class="capture-details">
+          <div><dt>Captured</dt><dd id="captured"></dd></div>
+          <div><dt>Original</dt><dd><a id="original" rel="noopener noreferrer" target="_blank"></a></dd></div>
+          <div><dt>Snapshot</dt><dd><button id="copy-link" type="button" class="link-button">Copy link</button> · <a id="view-files" rel="noopener noreferrer" target="_blank">View files on GitHub</a></dd></div>
+        </dl>
+      </header>
+      <div id="content" class="article-body"></div>
+    </article>
+  </main>
+</body>
+</html>

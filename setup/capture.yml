@@ -1,0 +1,59 @@
+# This file belongs in the PRIVATE snapshots repository, at
+# .github/workflows/capture.yml. It is kept here as a reference copy.
+#
+# The Webpage Archiver web app starts this workflow when you press "Save".
+# It downloads the capture program from the public webpage_archiver
+# repository, captures the page, and saves the snapshot into this repository.
+
+name: Capture webpage
+run-name: Capture ${{ inputs.id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Address of the page to capture
+        required: true
+      id:
+        description: Snapshot id (chosen by the web app)
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download the capture program
+        uses: actions/checkout@v4
+        with:
+          repository: Simonh1982/webpage_archiver
+          ref: main
+          path: tool
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tool/capture/package-lock.json
+
+      - name: Install
+        working-directory: tool/capture
+        run: npm ci --no-audit --no-fund
+
+      - name: Capture the page
+        env:
+          CAPTURE_URL: ${{ inputs.url }}
+          CAPTURE_ID: ${{ inputs.id }}
+          OUT_DIR: ${{ runner.temp }}/out
+        run: node tool/capture/capture.js
+
+      - name: Save the snapshot
+        env:
+          CAPTURE_ID: ${{ inputs.id }}
+          OUT_DIR: ${{ runner.temp }}/out
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node tool/capture/publish.js

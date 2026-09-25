@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com; script-src 'self'; style-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Archive · Webpage Archiver</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/archive.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">Webpage Archiver</a>
+    <nav>
+      <a href="archive.html" aria-current="page">Archive</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+  <main class="wide">
+    <div class="page-title">
+      <h1>Archive</h1>
+      <p id="count" class="muted"></p>
+    </div>
+    <div class="toolbar">
+      <label for="filter" class="visually-hidden">Search the archive</label>
+      <input id="filter" type="search" placeholder="Search titles and addresses" autocomplete="off">
+      <button id="download-csv" type="button" class="button" disabled>Download CSV</button>
+    </div>
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    <table id="archive" class="archive-table" hidden>
+      <thead>
+        <tr>
+          <th scope="col"><button type="button" class="sort" data-sort="capturedAt">Date captured</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="title">Title</button></th>
+          <th scope="col"><button type="button" class="sort" data-sort="url">Original address</button></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+</body>
+</html>

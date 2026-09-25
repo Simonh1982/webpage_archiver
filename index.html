@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com; script-src 'self'; style-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Webpage Archiver</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/home.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">Webpage Archiver</a>
+    <nav>
+      <a href="archive.html">Archive</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+  </header>
+  <main class="home">
+    <h1>Webpage Archiver</h1>
+    <p class="lede">Paste the address of a page to save a readable copy of its headings, text and images.</p>
+
+    <div id="setup-notice" class="notice" hidden>
+      Before you can save pages on this device, add your access key in <a href="settings.html">Settings</a>.
+    </div>
+
+    <form id="capture-form" class="capture-form" novalidate>
+      <label for="url" class="visually-hidden">Page address</label>
+      <input id="url" name="url" type="url" inputmode="url" autocomplete="off" placeholder="https://www.example.com/news/article" required>
+      <button id="save" type="submit" class="button primary">Save</button>
+    </form>
+
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+
+    <p class="explore"><a class="button" href="archive.html">Explore archive</a></p>
+  </main>
+</body>
+</html>
