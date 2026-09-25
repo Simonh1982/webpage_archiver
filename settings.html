@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' blob: data:; connect-src https://api.github.com; script-src 'self'; style-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Settings · Webpage Archiver</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/settings.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">Webpage Archiver</a>
+    <nav>
+      <a href="archive.html">Archive</a>
+      <a href="settings.html" aria-current="page">Settings</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Settings</h1>
+    <p>These settings are stored only in this browser. You need to add them once on each device you use.</p>
+
+    <form id="settings-form" class="settings-form">
+      <label for="token">Access key (GitHub personal access token)</label>
+      <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+      <p class="hint">The README explains how to create one. It needs <strong>Actions: read and write</strong> and <strong>Contents: read-only</strong> access to your snapshots repository only.</p>
+
+      <label for="repo">Snapshots repository</label>
+      <input id="repo" type="text" autocomplete="off" spellcheck="false">
+      <p class="hint">In the form <code>owner/name</code>.</p>
+
+      <div class="actions">
+        <button type="submit" class="button primary">Save and test</button>
+        <button id="clear" type="button" class="button">Remove from this device</button>
+      </div>
+    </form>
+
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+  </main>
+</body>
+</html>
